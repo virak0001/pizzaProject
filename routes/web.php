@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +15,22 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auths.login');
 });
+
+Route::get('/home','HomeController@index');
+
+Route::get('/signup', function () {
+    return view('auths.register');
+});
+Route::put('signin','Auth\RegisterController@signin')->name('signin');
+
+Route::get('logout','Auth\LogoutController@logout')->name('logout');
+
+Route::put('login','Auth\LoginController@login')->name('login');
+
+Route::put('storePizaa','PizzaController@store')->name('storePizza');
+
+Route::delete('destroyPizza/{id}','PizzaController@destroy')->name('destroyPizza');
+
+Route::put('updatePizza/{id}','PizzaController@update')->name('updatePizza');
