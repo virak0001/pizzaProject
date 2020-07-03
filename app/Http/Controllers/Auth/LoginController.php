@@ -11,8 +11,11 @@ use App\User;
 class LoginController extends Controller
 {
     public function login(Request $request){
+        $request -> validate([
+            'email' => 'required | email',
+            'password' => 'required',
+        ]);
        session_start();
-
        $email = $request->get('email');
        $verify_email = User::where('email', $email)->first()->exists();
        $user_password = User::where('email', $email)->first()->password;

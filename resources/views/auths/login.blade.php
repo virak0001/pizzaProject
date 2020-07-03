@@ -15,11 +15,17 @@
         <div>
           <div class="form-group">
             <label class="text-uppercase small">Email</label>
-            <input type="email" name="email" class="form-control" class="@error('email') is-invalid @enderror" placeholder="Enter email" required>
+            <input type="email" name="email" class="form-control" required placeholder="Enter email">
+            @error('email')
+                <small class="text-danger">{{$message}}</small>           
+            @enderror
           </div>
           <div class="form-group">
             <label class="text-uppercase small">Password</label>
-            <input type="password" name="password" class="form-control" placeholder="Password" required>
+            <input type="password" name="password" class="form-control" required placeholder="Password">
+            @error('password')
+                <small class="text-danger">{{$message}}</small>           
+            @enderror
           </div>
         </div>
       </div>

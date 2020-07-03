@@ -16,14 +16,23 @@
           <div class="form-group">
             <label class="text-uppercase small">Email</label>
             <input type="email" name="email" class="form-control" required placeholder="Enter email" >
+            @error('email')
+                <small class="text-danger">{{$message}}</small>           
+            @enderror
           </div>
           <div class="form-group">
             <label class="text-uppercase small">Password</label>
             <input type="password" name="password" class="form-control" required placeholder="Password" >
+            @error('password')
+            <small class="text-danger">{{$message}}</small>            
+            @enderror
           </div>
-          <div class="form-group">
+          <div class="form-group"
             <label class="text-uppercase small">Address</label>
             <textarea name="address"  class="form-control" required placeholder="Address" ></textarea>
+            @error('address')           
+              <small class="text-danger">{{$message}}</small>  
+            @enderror
           </div>
           <div class="form-check">
             <label class="form-check-label">
