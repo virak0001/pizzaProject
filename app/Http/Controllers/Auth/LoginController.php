@@ -16,16 +16,22 @@ class LoginController extends Controller
             'password' => 'required',
         ]);
        session_start();
+
+
        $email = $request->get('email');
-       $verify_email = User::where('email', $email)->first()->exists();
-       $user_password = User::where('email', $email)->first()->password;
-       $verify_password = Hash::check($request->get('password'),$user_password);
-       if($verify_email == true && $verify_password== true){
-        session(['email'=>$email]);
-        session('email');
-        return redirect('/home');
-       }else {
+       $verify_email = User::where('email', $email)->exists();
+       if($verify_email){
+            $user_password = User::where('email', $email)->first()->password;
+            $verify_password = Hash::check($request->get('password'),$user_password);
+            if($verify_email == true && $verify_password== true){
+            session(['email'=>$email]);
+            session('email');
+            return redirect('/home');
+            }else {
+                return redirect('/');
+            }
+        }else{
             return redirect('/');
-       }
+        }
    }
 }

@@ -67,8 +67,8 @@
 											</div>
 										</div>
 										<!-- =================================END MODEL UPDATE==================================================== -->
-										<a  onclick="document.getElementById('delete').submit()" href="#"  data-toggle="tooltip" title="Delete Pizza!" data-placement="right"><i class="material-icons text-danger">delete</i></a>
-										<form id="delete" action="{{route('destroyPizza',$pizza->id)}}" method="post">
+										<a  onclick="document.getElementById('delete{{$pizza->id}}').submit()" href="#"  data-toggle="tooltip" title="Delete Pizza!" data-placement="right"><i class="material-icons text-danger">delete</i></a>
+										<form id="delete{{$pizza->id}}" action="{{route('destroyPizza',$pizza->id)}}" method="post">
 											@csrf
 											@method('delete')
 										</form>	

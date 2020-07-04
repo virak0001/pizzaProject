@@ -14,9 +14,17 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('auths.login');
-});
+if (session('email')) {;
+    Route::get('/', function () {
+        return view('/home');
+    });
+}else {
+    Route::get('/', function () {
+        return view('auths.login');
+    });
+}
+
+
 
 Route::get('/home','HomeController@index');
 
