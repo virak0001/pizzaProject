@@ -14,15 +14,13 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-if (session('email')) {;
-    Route::get('/', function () {
-        return view('/home');
-    });
-}else {
-    Route::get('/', function () {
+Route::get('/', function () {
+    if (session('email')) {
+        return redirect('/home');
+    }else {
         return view('auths.login');
-    });
-}
+    }
+});
 
 
 
